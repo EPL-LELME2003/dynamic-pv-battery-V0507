@@ -67,6 +67,7 @@ model.Contrainte_Puissance_Batterie_Out = pyo.Constraint(model.Temps, rule=contr
 
 def contrainte_demande(model, t):
     model.Production_PV[t] + model.Puissance_Batterie_Out[t] - model.Puissance_Batterie_in[t] >= model.Load[t]
+model.Contrainte_demande = pyo.Constraint(model.Temps, rule = contrainte_demande)
 
 
 
