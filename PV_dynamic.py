@@ -98,3 +98,15 @@ print("Optimal Battery Capacity : ", model.Capacité_Batterie.value)
 ##########################################
 ############ CODE TO ADD HERE ############
 ########################################
+
+print("Optimal PV (kW) : ", model.PV.value)
+print("Optimal Battery Capacity (kWh) : ", model.Capacité_Batterie.value)
+
+# Affichage des courbes de résultats
+plt.plot(range(timestep), [model.Production_PV[t].value for t in model.Temps], label="PV Production")
+plt.plot(range(timestep), load, label="Load", linestyle="--")
+plt.plot(range(timestep), [model.Remplisage_Batterie[t].value for t in model.Temps], label="Battery SOC")
+plt.xlabel("Time (hours)")
+plt.ylabel("Energy (kWh)")
+plt.legend()
+plt.show()
